@@ -1,11 +1,19 @@
-import React from 'react';
+import { LoaderCircle } from 'lucide-react';
+import React, { Suspense } from 'react';
+import AllProjectModule from './_components/AllProjectModul';
 
-const ManageProject = () => {
-    return (
-        <div>
-            This is my Manage project page
+const ManageProjectPage = () => {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex size-full min-h-dvh items-center justify-center">
+          <LoaderCircle className="animate-spin transition-all duration-300 ease-in-out" />
         </div>
-    );
+      }
+    >
+      <AllProjectModule />
+    </Suspense>
+  );
 };
 
-export default ManageProject;
+export default ManageProjectPage;
