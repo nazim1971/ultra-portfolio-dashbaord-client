@@ -1,4 +1,4 @@
-import CreateBlogForm from "./CreateIdeaForm";
+import CreateBlogForm from "./CreateBlogForm";
 
 
 

@@ -1,6 +1,6 @@
 import { LoaderCircle } from 'lucide-react';
 import React, { Suspense } from 'react';
-import CreateBlogModule from './_components/CreateIdeaModule';
+import CreateBlogModule from './_components/CreateBlogModule';
 
 const CreateBlog = () => {
    return (
