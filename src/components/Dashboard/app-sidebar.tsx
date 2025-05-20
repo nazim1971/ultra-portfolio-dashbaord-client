@@ -63,7 +63,6 @@ export function AppSidebar({
       icon: SquareChartGantt,
       key: 'skill',
       children: [
-        { title: 'All Skill', url: '/admin/skill/all-skills' },
         { title: 'Manage Skill', url: '/admin/skill/manage-skill' },
         { title: 'Create Skill', url: '/admin/skill/create-skill' },
       ],

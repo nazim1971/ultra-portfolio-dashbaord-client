@@ -1,11 +1,19 @@
-import React from 'react';
+import { LoaderCircle } from 'lucide-react';
+import React, { Suspense } from 'react';
+import AllSkillModule from './_components/AllSkillModule';
 
-const ManageSkill = () => {
-    return (
-        <div>
-            This is my Manage skill page
+const ManageSkillPage = () => {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex size-full min-h-dvh items-center justify-center">
+          <LoaderCircle className="animate-spin transition-all duration-300 ease-in-out" />
         </div>
-    );
+      }
+    >
+      <AllSkillModule />
+    </Suspense>
+  );
 };
 
-export default ManageSkill;
+export default ManageSkillPage;
