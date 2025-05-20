@@ -69,7 +69,7 @@ export function DataTable({ blogs }: DataTableProps) {
   };
 
   const handleEditClick = (blogId: string) => {
-    router.push(`/admin/edit-blog/${blogId}`);
+    router.push(`/admin/blog/manage-blog/${blogId}`);
   };
 
   const handleConfirmDelete = async () => {
