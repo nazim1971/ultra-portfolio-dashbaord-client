@@ -45,7 +45,8 @@ import { toast } from 'sonner';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
-import { DeleteProjectConfirmationModal } from './DeleteModel';
+import { DeleteConfirmationModal } from './DeleteModel';
+import { deleteProject } from '../_actions';
 
 interface DataTableProps {
   projects: {
@@ -68,8 +69,8 @@ export function DataTable({ projects }: DataTableProps) {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const router = useRouter();
 
-  const handleDeleteClick = (projectId: string) => {
-    setSelectedProjectId(projectId);
+  const handleDeleteClick = async(projectId: string) => {
+     setSelectedProjectId(projectId);
     setOpenDeleteModal(true);
   };
 
@@ -80,8 +81,7 @@ export function DataTable({ projects }: DataTableProps) {
   const handleConfirmDelete = async () => {
     if (!selectedProjectId) return;
     try {
-      // Replace with your project delete action
-      // await deleteProject(selectedProjectId);
+     await deleteProject(selectedProjectId)
       toast.success('Project deleted successfully');
       setOpenDeleteModal(false);
       router.refresh();
@@ -153,10 +153,10 @@ export function DataTable({ projects }: DataTableProps) {
       },
     },
     {
-      accessorKey: 'liveLink',
+      accessorKey: 'liveSiteLink',
       header: 'Live Link',
       cell: ({ row }) => {
-        const liveLink = row.getValue('liveLink') as string;
+        const liveLink = row.getValue('liveSiteLink') as string;
         return liveLink ? (
           <Button variant="outline" size="sm" asChild>
             <Link href={liveLink} target="_blank" rel="noopener noreferrer">
@@ -353,7 +353,7 @@ export function DataTable({ projects }: DataTableProps) {
           </Button>
         </div>
       </div>
-      <DeleteProjectConfirmationModal
+      <DeleteConfirmationModal
         open={openDeleteModal}
         onCancel={() => setOpenDeleteModal(false)}
         onConfirm={handleConfirmDelete}

@@ -10,17 +10,17 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
-interface DeleteProjectConfirmationModalProps {
+interface DeleteConfirmationModalProps {
   open: boolean;
   onConfirm: () => void;
   onCancel: () => void;
 }
 
-export const DeleteProjectConfirmationModal = ({
+export const DeleteConfirmationModal = ({
   open,
   onConfirm,
   onCancel,
-}: DeleteProjectConfirmationModalProps) => {
+}: DeleteConfirmationModalProps) => {
   return (
     <Dialog open={open} onOpenChange={onCancel}>
       <DialogContent>

@@ -7,6 +7,7 @@ type TImangePreviewer = {
   imagePreview: string[];
   setImagePreview: React.Dispatch<React.SetStateAction<string[]>>;
   className?: string;
+  onRemoveImage?: (url: string) => void;
 };
 
 const ImagePreviewer = ({
