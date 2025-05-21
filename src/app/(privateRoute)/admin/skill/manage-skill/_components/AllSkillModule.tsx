@@ -10,7 +10,7 @@ const AllSkillModule = async () => {
 
   return (
     <div>
-      <DataTable skills={skill.data} />
+      <DataTable skills={skill?.data} />
     </div>
   );
 };

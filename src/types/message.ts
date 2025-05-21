@@ -4,7 +4,7 @@ export type TMessage = {
   email: string;
   subject: string;
   message: string;
-  viewed?: boolean;       // Optional when creating, defaults to false
-  createdAt?: Date;       // Automatically set by Mongoose
-  updatedAt?: Date;       // Automatically set by Mongoose
+  viewed: boolean;       // Optional when creating, defaults to false
+  createdAt: string;       // Automatically set by Mongoose
+  updatedAt: string;       // Automatically set by Mongoose
 };

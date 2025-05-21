@@ -72,9 +72,8 @@ export function AppSidebar({
       icon: SquareChartGantt,
       key: 'message',
       children: [
-        { title: 'Manage Message', url: '/admin/message/all-message' },
-        { title: 'Manage Message', url: '/admin/message/manage-message' },
-        { title: 'Create Message', url: '/admin/message/create-message' },
+        { title: 'All Message', url: '/admin/message/all-message' },
+        { title: 'Manage Message', url: '/admin/message/manage-message' }
       ],
     },
   ];
