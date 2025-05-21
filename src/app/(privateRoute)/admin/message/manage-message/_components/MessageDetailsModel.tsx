@@ -8,9 +8,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Mail, User, MessageSquare, Tag, Eye, EyeOff, X } from "lucide-react";
+import { Mail, User, MessageSquare, Tag, Eye, EyeOff,  } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 
 export function MessageDetailsModal({
   message,

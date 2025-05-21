@@ -1,6 +1,5 @@
-"use client";
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -12,8 +11,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -23,6 +20,7 @@ import TGImageUploader from "@/components/ui/ImageUploader";
 import ImagePreviewer from "@/components/ui/ImageUploader/ImagePreviewer";
 import { createBlog } from "../_actions";
 import { CreateBlogValidation } from "./BlogValidation";
+import { TiptapEditor } from "@/components/TextEditor/TextEditor";
 
 const CreateBlogForm = () => {
   const [imageFiles, setImageFiles] = useState<File[]>([]);
@@ -36,7 +34,7 @@ const CreateBlogForm = () => {
     defaultValues: {
       title: "",
       description: "",
-      content: "",
+      content: "<p>Start writing your blog content here...</p>", // Default rich text content
       readingTime: "",
       tags: [],
       slug: "",
@@ -46,20 +44,18 @@ const CreateBlogForm = () => {
   const handleSubmit: SubmitHandler<any> = async (data) => {
     setIsSubmitting(true);
 
-     const formData = new FormData();
-      formData.append("data", JSON.stringify(data));
+    const formData = new FormData();
+    formData.append("data", JSON.stringify(data));
 
-      for (const file of imageFiles) {
-        formData.append("image", file);
-      }
-
+    for (const file of imageFiles) {
+      formData.append("image", file);
+    }
 
     try {
-      // Replace this with your actual createBlog API call
       const res = await createBlog(formData);
       if (res?.success) {
         toast.success(res?.message || "Blog created successfully!");
-        router.push(`/admin/blog/${res?.data?.slug || res?.data?.id}`);
+        router.push(`/admin/blog/${res?.data?.id}`);
       } else {
         toast.error(res?.message || "Failed to create blog.");
       }
@@ -101,7 +97,7 @@ const CreateBlogForm = () => {
                 <FormItem>
                   <FormLabel>Description</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Short description" {...field} />
+                    <Input placeholder="Short description" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -115,10 +111,10 @@ const CreateBlogForm = () => {
                 <FormItem>
                   <FormLabel>Content</FormLabel>
                   <FormControl>
-                    <Textarea
-                      rows={8}
-                      placeholder="Full blog content"
-                      {...field}
+                    <TiptapEditor
+                      content={field.value}
+                      onChange={field.onChange}
+                      placeholder="Write your blog content here..."
                     />
                   </FormControl>
                   <FormMessage />
@@ -126,6 +122,7 @@ const CreateBlogForm = () => {
               )}
             />
 
+            {/* Rest of your form fields... */}
             <FormField
               control={form.control}
               name="readingTime"
@@ -149,7 +146,7 @@ const CreateBlogForm = () => {
                   <FormControl>
                     <Input
                       placeholder="e.g., JavaScript, TypeScript, WebDev"
-                      value={(field.value || []).join(", ")} // display as comma-separated string
+                      value={(field.value || []).join(", ")}
                       onChange={(e) =>
                         field.onChange(
                           e.target.value
@@ -184,7 +181,6 @@ const CreateBlogForm = () => {
               <p className="text-primary font-bold text-xl text-center border-t border-b py-3 my-5">
                 Cover Image
               </p>
-
               <div className="flex gap-4">
                 <TGImageUploader
                   setImageFiles={setImageFiles}

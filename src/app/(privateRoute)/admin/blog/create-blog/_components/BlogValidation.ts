@@ -6,6 +6,6 @@ export const CreateBlogValidation = z.object({
   content: z.string().min(20, "Content must be at least 50 characters"),
   tags: z.array(z.string()).optional(),
   readingTime: z.string().min(2, "Reading time is required"),
-  slug: z.string().min(3, "Slug must be at least 3 characters").optional(),
+  slug: z.string().optional(),
   image: z.string().optional(),
 });
