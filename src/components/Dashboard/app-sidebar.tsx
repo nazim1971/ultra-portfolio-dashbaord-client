@@ -67,6 +67,16 @@ export function AppSidebar({
         { title: 'Create Skill', url: '/admin/skill/create-skill' },
       ],
     },
+    {
+      title: 'Message',
+      icon: SquareChartGantt,
+      key: 'message',
+      children: [
+        { title: 'Manage Message', url: '/admin/message/all-message' },
+        { title: 'Manage Message', url: '/admin/message/manage-message' },
+        { title: 'Create Message', url: '/admin/message/create-message' },
+      ],
+    },
   ];
 
   const defaultNav = [
