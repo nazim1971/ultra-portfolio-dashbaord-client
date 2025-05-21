@@ -45,11 +45,6 @@ export const updateProfile = async (formData: FormData) => {
       }
     );
 
-    if (res.status === 413) {
-    toast.error('Image too large. Please upload an image under 1MB.');
-    return;
-  }
-
     const result = await res.json();
 
     if (result.success) {

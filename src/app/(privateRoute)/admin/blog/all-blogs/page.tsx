@@ -21,7 +21,7 @@ const AllIdeasPage = async ({
 
   return (
     <div>
-      <AllBlogs blogs={blogs} />
+      <AllBlogs blogs={blogs || []} />
       <Pagination page={Number(query.page)} totalPage={meta?.totalPage} />
     </div>
   );

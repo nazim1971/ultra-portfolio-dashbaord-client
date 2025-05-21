@@ -33,7 +33,7 @@ export function NavUser() {
     await logOut();
     setUser(null)
     if (protectedRoutes.some(route => pathname.match(route))) {
-      router.push('/login');
+      router.push('/');
     }
   };
 

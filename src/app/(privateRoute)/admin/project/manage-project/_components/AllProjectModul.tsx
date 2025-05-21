@@ -8,7 +8,7 @@ const AllProjectModule = async () => {
 
   return (
     <div>
-      <DataTable projects={projects.data} />
+      <DataTable projects={projects?.data || []} />
     </div>
   );
 };

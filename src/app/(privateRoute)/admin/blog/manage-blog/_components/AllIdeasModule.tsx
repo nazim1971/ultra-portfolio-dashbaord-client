@@ -9,7 +9,7 @@ const AllBlogsModule = async () => {
 
   return (
     <div>
-      <DataTable blogs={blogs} />
+      <DataTable blogs={blogs || []} />
     </div>
   );
 };

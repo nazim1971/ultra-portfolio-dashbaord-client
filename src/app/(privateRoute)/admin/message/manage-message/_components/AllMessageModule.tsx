@@ -9,7 +9,7 @@ const AllMessageModule = async () => {
 
   return (
     <div>
-      <DataTable messages={message?.data} />
+      <DataTable messages={message?.data || []} />
     </div>
   );
 };

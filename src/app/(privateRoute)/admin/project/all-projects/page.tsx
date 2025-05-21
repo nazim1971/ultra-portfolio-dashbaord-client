@@ -21,7 +21,7 @@ const AllProjectsPage = async ({
 
   return (
     <div>
-      <AllProjects projects={projects?.data} />
+      <AllProjects projects={projects?.data || []} />
       <Pagination page={Number(query.page) || 1} totalPage={meta?.totalPage} />
     </div>
   );

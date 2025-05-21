@@ -7,7 +7,6 @@ import {
   HomeIcon,
   LayoutDashboard,
   UserCog,
-  UsersRoundIcon,
   SquareChartGantt,
   ChevronDown,
   ChevronRight,
@@ -130,15 +129,6 @@ export function AppSidebar({
                   ))}
               </div>
             ))}
-
-            <SidebarMenuItem>
-              <SidebarMenuButton asChild>
-                <Link href="/admin/user">
-                  <UsersRoundIcon className="w-4 h-4" />
-                  Manage Users
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
           </SidebarMenu>
         )}
       </SidebarContent>

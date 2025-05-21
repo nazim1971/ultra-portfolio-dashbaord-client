@@ -115,7 +115,7 @@ export function DataTable({ messages }: DataTableProps) {
     try {
       const message = await getSingleMessageDetails(messageId);
       setSelectedMessage(message.data);
-      console.log(message)
+     
       setViewModalOpen(true);
     } catch (err: any) {
       toast.error(err.message || "Failed to fetch message details");

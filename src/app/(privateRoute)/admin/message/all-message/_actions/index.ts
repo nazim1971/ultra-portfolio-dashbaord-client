@@ -4,7 +4,7 @@ import { getValidToken } from "@/lib/getValidToken";
 export const getAllMessage = async (
   page?: string,
   limit: string = '12',
-  query?: { [key: string]: string | string[] | undefined }
+ 
 ): Promise<any> => {
   try {
     const token = await getValidToken();
@@ -17,9 +17,6 @@ export const getAllMessage = async (
     if (page) params.append('page', page);
     if (limit) params.append('limit', limit);
 
-    if (query?.searchTerm) {
-      params.append('searchTerm', query.searchTerm.toString());
-    }
 
     // Add any other query params similarly...
 

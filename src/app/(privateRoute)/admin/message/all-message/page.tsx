@@ -2,20 +2,12 @@ import Pagination from '@/components/Pagination';
 import AllMessages from './_components/AllMessage';
 import { getAllMessage } from './_actions';
 
-type SearchParams = { [key: string]: string | string[] | undefined };
 
-const AllMessagesPage = async ({
-  searchParams,
-}: {
-  searchParams: SearchParams;
-}) => {
-  const { page = '1', ...query } = searchParams;
+
+const AllMessagesPage = async()=> {
+
  
-  const { data: messages, meta } = await getAllMessage(
-    page as string,
-    '12',
-    query
-  );
+  const { data: messages, meta } = await getAllMessage();
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -26,12 +18,12 @@ const AllMessagesPage = async ({
         </p>
       </div>
       
-      <AllMessages messages={messages?.data} />
+      <AllMessages messages={messages?.data || []} />
       
       {meta?.totalPage > 1 && (
         <div className="mt-8">
           <Pagination 
-            page={Number(page)} 
+            page={Number(meta?.data?.page)} 
             totalPage={meta?.totalPage} 
           />
         </div>
