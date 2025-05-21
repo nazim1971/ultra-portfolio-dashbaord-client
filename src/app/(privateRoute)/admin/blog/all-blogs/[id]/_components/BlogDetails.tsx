@@ -2,10 +2,9 @@
 'use client';
 
 import Image from 'next/image';
-import { User, CalendarDays, Clock, Tags } from 'lucide-react';
+import { User, CalendarDays, Clock} from 'lucide-react';
 import { useUser } from '@/context/UserContext';
 import { TBlog } from '@/types';
-import { generateTextFromHTML } from '@/lib/utils';
 import { format } from 'date-fns';
 
 const BlogDetail = ({ Blog }: { Blog: TBlog }) => {
@@ -44,7 +43,7 @@ const BlogDetail = ({ Blog }: { Blog: TBlog }) => {
 
         <div className="p-6 sm:p-8">
           {/* Metadata */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <div className="flex flex-col flex-wrap sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
                 <User className="w-4 h-4" />
@@ -103,7 +102,7 @@ const BlogDetail = ({ Blog }: { Blog: TBlog }) => {
               Last updated: {format(new Date(Blog.updatedAt), 'MMMM dd, yyyy')}
             </span>
             <span className="px-3 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-100 rounded-full text-sm">
-              {Blog.status || 'Published'}
+              {'Published'}
             </span>
           </div>
         </div>

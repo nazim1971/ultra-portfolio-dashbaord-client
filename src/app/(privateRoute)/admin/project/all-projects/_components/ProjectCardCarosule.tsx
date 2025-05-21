@@ -4,45 +4,44 @@ import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
-  CarouselNext,
-  CarouselPrevious,
+  CarouselItem,
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import { useRef } from "react";
 import { TProject } from "@/types";
 
 const ProjectCardCarousel = ({ project }: { project: TProject }) => {
-  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
+  const plugin = useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: true })
+  );
 
   return (
-    <div className="w-full h-full mx-auto px-6 flex justify-center mb-auto">
-      <Carousel
-        plugins={[plugin.current]}
-        className="w-full max-w-7xl"
-        onMouseEnter={plugin.current.stop}
-        onMouseLeave={plugin.current.reset}
-      >
-        <CarouselContent>
-          {project.images &&
-            project.images.map((img, idx) => (
-              <div
-                key={idx}
-                className="relative w-full h-[300px] md:h-[250px] lg:h-[250px] rounded-2xl"
-              >
-                <Image
-                  src={img}
-                  alt={`Project Image ${idx + 1}`}
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-lg"
-                />
-              </div>
-            ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-    </div>
+    <Carousel
+      plugins={[plugin.current]}
+      className="w-full h-full"
+      onMouseEnter={plugin.current.stop}
+      onMouseLeave={plugin.current.reset}
+      opts={{
+        align: "start",
+        loop: true,
+      }}
+    >
+      <CarouselContent>
+        {project.images?.map((img, idx) => (
+          <CarouselItem key={idx}>
+            <div className="relative w-full h-[200px] sm:h-[250px] md:h-[300px]">
+              <Image
+                src={img}
+                alt={`${project.title} - Image ${idx + 1}`}
+                fill
+                className="object-cover rounded-t-lg"
+                priority={idx === 0}
+              />
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+    </Carousel>
   );
 };
 

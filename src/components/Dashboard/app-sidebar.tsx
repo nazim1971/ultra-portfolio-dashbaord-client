@@ -85,7 +85,7 @@ export function AppSidebar({
       url: `/${user?.role.toLowerCase()}/dashboard`,
       icon: LayoutDashboard,
     },
-    { title: 'Profile', url: '/profile', icon: UserCog },
+    { title: 'Profile', url: '/admin/profile', icon: UserCog },
   ];
 
   return (
