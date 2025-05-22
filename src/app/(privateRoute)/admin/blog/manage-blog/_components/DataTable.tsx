@@ -187,7 +187,7 @@ export function DataTable({ blogs }: DataTableProps) {
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <Link href={`/blogs/${blog.slug}`} className="flex items-center">
+                <Link href={`/blogs/all-blogs/${blog._id}`} className="flex items-center">
                   <Eye className="mr-2 h-4 w-4" />
                   View
                 </Link>
