@@ -55,7 +55,7 @@ const CreateBlogForm = () => {
       const res = await createBlog(formData);
       if (res?.success) {
         toast.success(res?.message || "Blog created successfully!");
-        router.push(`/admin/blog/${res?.data?.id}`);
+        router.push(`/admin/blog/${res?.data?._id}`);
       } else {
         toast.error(res?.message || "Failed to create blog.");
       }
