@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {
   HomeIcon,
-  LayoutDashboard,
   UserCog,
   SquareChartGantt,
   ChevronDown,
@@ -78,12 +77,7 @@ export function AppSidebar({
   ];
 
   const defaultNav = [
-    { title: 'Home', url: '/', icon: HomeIcon },
-    {
-      title: 'Dashboard',
-      url: `/${user?.role.toLowerCase()}/dashboard`,
-      icon: LayoutDashboard,
-    },
+    { title: 'Home', url: '/admin', icon: HomeIcon },
     { title: 'Profile', url: '/admin/profile', icon: UserCog },
   ];
 
@@ -93,16 +87,18 @@ export function AppSidebar({
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <Link href="/">
-                <Image src={logo} alt="logo" className="h-20 w-40" />
+              <div className='h-20 w-20 '>
+                <Link className='mx-auto' href="/">
+                <Image src={logo} alt="logo" className="h-20 w-20  rounded-full" />
               </Link>
+              </div>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
 
       <SidebarContent>
-        <NavMain items={defaultNav} />
+        <NavMain  items={defaultNav} />
 
         {user?.role === 'ADMIN' && (
           <SidebarMenu>
