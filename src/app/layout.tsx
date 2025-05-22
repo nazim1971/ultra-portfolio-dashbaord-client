@@ -13,8 +13,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "GreenMind Hub",
-  description: "Welcome to Nexa Portfolio",
+  title: "Md. Nazim Uddin",
+  description: "Welcome to Nazim Portfolio",
 };
 
 export default async function RootLayout({
