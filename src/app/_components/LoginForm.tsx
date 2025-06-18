@@ -27,8 +27,8 @@ const LoginForm = ({ redirectPath }: { redirectPath: string | undefined }) => {
   const form = useForm({
     resolver: zodResolver(loginValidationSchema),
     defaultValues: {
-      email: 'nazimmuddin10@gmail.com',
-      password: '123456'
+      email: '',
+      password: ''
     }
   });
 
